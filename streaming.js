@@ -12,5 +12,9 @@ const messages = [
   new SystemMessage("Translate the following from English into Italian"),
   new HumanMessage("hi!"),
 ];
-const res = await model.invoke(messages);
-console.log(res.content);
+const stream = await model.stream(messages);
+const chunks = [];
+for await (const chunk of stream) {
+  chunks.push(chunk);
+  console.log(`${chunk.content}|`);
+}
