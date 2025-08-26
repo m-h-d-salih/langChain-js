@@ -16,3 +16,6 @@ const chain=prompt.pipe(llm)
 const input=process.argv.slice(2).join('') || "tell me a joke"
 const res=await chain.invoke({input})
 console.log(res.content)
+
+const res2=await chain.invoke({input:'tell me a fun fact about space'})
+console.log(res2.content)
