@@ -6,11 +6,11 @@ const llm = new ChatGoogleGenerativeAI({
   temperature: 0.3,
 });
 
-await llm.invoke("say hii")
+const res=await llm.invoke("say hii")
 for await (const chunk of await llm.stream("stream a haiku")){
     process.stdout.write(chunk.content)
 }
 
 // llm.invoke(messagesOrText) → accepts a string or chat messages
-
+console.log(res.content)
 // llm.stream(...) → token/segment streaming
